@@ -1,0 +1,51 @@
+<%-layout('./Layouts/layout')%>
+
+<body>
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-info">
+            <h1>Create a new Listing</h1>
+                <form method="post" action="/listings/<%=data._id%>/edit?_method=PUT" enctype="multipart/form-data">
+                    <div class="form-group mb-2">
+                    <label for="exampleFormControlInput1">Title:</label>
+                    <input type="text" name="listing[title]" value="<%=data.title%>"  class="form-control" id="exampleFormControlInput1" placeholder="Enter Title">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="exampleFormControlInput1">Description:</label>
+                        <textarea type="text" name="listing[description]"  class="form-control" id="exampleFormControlInput1" placeholder="Description"><%=data.description%></textarea>
+                    </div>
+                    <div class="form-group mb-2">
+                        Original Image<br>
+                        <img src="<%= originalUrl %>" alt="">
+                    </div>
+                    <div class="form-group mb-2 ">
+                        <label for="exampleFormControlInput1">Upload new Image</label>
+                        <input type="file" name="listing[url]"  class="form-control" accept="image/*" id="exampleFormControlInput1">
+                    </div>
+    
+                    <div class="row">
+                        <div class="mb-4 col-md-4">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Price:</label>
+                                <input type="number" name="listing[price]" value="<%=data.price%>" class="form-control" id="exampleFormControlInput1" placeholder="1200">
+                            </div>
+                        </div>
+                        <div class="mb-4 col-md-8">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Country:</label>
+                                <input type="text" name="listing[country]" value="<%=data.country%>" class="form-control" id="exampleFormControlInput1" placeholder="India">
+                            </div>
+                        </div>
+    
+                    </div>
+                    
+                    <div class="form-group ">
+                        <label for="exampleFormControlInput1">Location</label>
+                        <input type="text" name="listing[location]" value="<%=data.location%>" class="form-control" id="exampleFormControlInput1" placeholder="kolkata,westbengal">
+                    </div>
+    
+                    <button class="btn btn-dark add-btn">add</button>
+                </form>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5"></div>
+</body>

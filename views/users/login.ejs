@@ -1,0 +1,20 @@
+<%-layout('./Layouts/layout')%>
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h1>Login</h1>
+        <form method="post" action="/login" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="email">username</label>
+                <input type="text" name="username" class="form-control" id="email" placeholder="Enter username" required>
+                
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+                
+            </div>
+            <button class="btn btn-success add-btn mt-3">signin</button>
+        </form>
+    </div>
+</div>

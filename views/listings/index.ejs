@@ -1,0 +1,140 @@
+
+<% layout('./Layouts/layout.ejs') %>
+
+    <style>
+        .filters{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+            gap: 0px;
+        }
+        .filter{
+            opacity:.7;
+
+        }
+        .filter:hover{
+            opacity: 1;
+        }
+        .filter p{
+            font-size: .8rem;
+        }
+        .tax-info{
+            display: none;
+        }
+
+        .tax-toggle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgb(45, 29, 29);
+            border-radius: 15px;
+            padding:0 10px ;
+            height: 2.5rem;
+            margin-left: 15rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .filter{
+                margin-left: 0px !important;
+            }
+            .tax-toggle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgb(45, 29, 29);
+            border-radius: 15px;
+            padding:0 10px ;
+            height: 2.5rem;
+            margin-left: 10px !important;
+            width:40vw !important;
+            flex: 1;
+        }
+        }
+    </style>
+    <div class="filters ">
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>rooms</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic cities</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountain</p>
+        </div>
+        <!-- <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing pools</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+        </div>
+        <div class="filter text-center me-3 mt-2">
+            <div><i class="fa-regular fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div> -->
+        <div class="tax-toggle  me-3 mt-2 ">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+              </div>
+        </div>
+    </div>
+    
+    <div class="container mt-4">
+        <div class="row g-4">
+            <% for (data of allData) { %>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 -flex align-items-stretch">
+                    <div class="card h-100 border-0">
+                        <a href="/listings/<%=data._id%>" class="d-block">
+                            <img src="<%=data.image.url%>" class="card-img-top" alt="<%=data.title%>" style="height:14rem; object-fit: cover; border-radius: 0.5rem;">
+                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="/listings/<%=data._id%>" class="text-decoration-none text-dark flex-grow-1">
+                                <p class="card-text mb-1 fw-bold"><%=data.title %></p>
+                                <p class="card-text mb-0">₹<%=data.price.toLocaleString('en-IN')%>/night 
+                                <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5"></div>
+
+
+
+    <script>
+        let toggle = true;
+        let taxSwitch = document.getElementById('flexSwitchCheckDefault')
+        taxSwitch.addEventListener('click',()=>{
+            let taxInfo = document.getElementsByClassName("tax-info");
+            for(info of taxInfo){
+                if(info.style.display !== 'inline'){
+                    info.style.display = 'inline';
+                }
+                else{
+                        info.style.display = 'none';
+                }
+            }    
+        })
+    </script>

@@ -1,0 +1,125 @@
+<!-- 
+
+   
+
+
+<div class="row">
+    <div class="col-8 offset-2 ">
+        <h1>Create a new Listing</h1>
+            <form method="post" action="/listings/add"  class="needs-validation" novalidate>
+                <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" required>
+                <div class="invalid-feedback">
+                    please enter title
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Description</label>
+                    <textarea type="text" name="description" class="form-control" id="exampleFormControlInput1" placeholder="Description" required></textarea>
+                    <div class="invalid-feedback">
+                        please enter Descriptionx
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Image Link</label>
+                    <input type="text" name="url" class="form-control" id="exampleFormControlInput1" placeholder="image link/url" >
+                    
+                </div>
+
+                <div class="row">
+                    <div class="mb-4 col-md-4">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Price</label>
+                            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="1200" required>
+                            <div class="invalid-feedback">
+                                please enter Price
+                              </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 col-md-8">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Country</label>
+                            <input type="text" name="country" class="form-control" id="exampleFormControlInput1" placeholder="India" required>
+                            <div class="invalid-feedback">
+                                please enter Country
+                              </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="form-group ">
+                    <label for="exampleFormControlInput1">Location</label>
+                    <input type="text" name="location" class="form-control" id="exampleFormControlInput1" placeholder="kolkata,westbengal" required>
+                    <div class="invalid-feedback">
+                        please enter Location
+                      </div>
+                </div>
+
+                <button class="btn btn-dark add-btn ">add</button>
+            </form>
+    </div>
+</div>
+<div class="row mt-5 mb-5"></div> -->
+
+<%- layout('./Layouts/layout') %>
+
+<div class="row">
+    <div class="col-8 offset-2 text-info">
+        <h1>Create a New Listing</h1>
+        <form method="post" action="/listings" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="listing[title]" class="form-control" id="title" placeholder="Enter Title" required>
+                <div class="invalid-feedback">
+                    Please enter a title.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="listing[description]" class="form-control" id="description" placeholder="Description" required></textarea>
+                <div class="invalid-feedback">
+                    Please enter a description.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imageLink">Upload Image</label>
+                <input type="file" name="listing[url]" class="form-control" id="imageLink" accept="image/*" required>
+                
+            </div>
+
+            <div class="row">
+                <div class="mb-4 col-md-4">
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" name="listing[price]" class="form-control" id="price" placeholder="1200" required>
+                        <div class="invalid-feedback">
+                            Please enter a price.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4 col-md-8">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" name="listing[country]" class="form-control" id="country" placeholder="India" required>
+                        <div class="invalid-feedback">
+                            Please enter a country.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" name="listing[location]" class="form-control" id="location" placeholder="Kolkata, West Bengal" required>
+                <div class="invalid-feedback">
+                    Please enter a location.
+                </div>
+            </div>
+
+            <button class="btn btn-dark add-btn mt-3">Add</button>
+        </form>
+    </div>
+</div>
+<div class="row mt-5 mb-5"></div>
